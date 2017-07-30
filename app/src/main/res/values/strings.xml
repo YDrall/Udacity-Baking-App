@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Baking App</string>
+    <string name="recipe_first_character">recipe first character_string</string>
+    <string name="step_count_image_description">Step count image</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recipe_demo_image">recipe demo image</string>
+    <string name="steps">Steps:</string>
+    <string name="ingredients">Ingredients</string>
+
+    <string name="play_icon_author_credit"><div>Icons made by <a href="https://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank" title="Creative Commons BY 3.0">CC 3.0 BY</a></div></string>
+    <string name="play_icon">Play icon</string>
+    <string name="select_a_recipe_from_recipes_list">Select a Recipe from recipes list</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+</resources>
