@@ -15,28 +15,37 @@
 
 package me.drall.bakingapp.ui.adapters;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
 import com.amulyakhare.textdrawable.TextDrawable;
+
 import java.util.List;
 import java.util.Locale;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import me.drall.bakingapp.GlideApp;
 import me.drall.bakingapp.R;
 import me.drall.bakingapp.data.pojo.Recipe;
 
 public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.ViewHolder> {
 
     private List<Recipe> recipes;
+    private Context context;
 
-    public RecipeListAdapter(@Nullable List<Recipe> recipes) {
+    public RecipeListAdapter(@Nullable List<Recipe> recipes, @NonNull Context context) {
         this.recipes = recipes;
+        this.context = context;
     }
 
     @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -50,13 +59,21 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
         holder.recipeIngredients.setText(String.format(Locale.getDefault(), "Ingredients: %d",
             recipes.get(position).ingredients().size()));
 
-        TextDrawable drawable = TextDrawable.builder()
-            .buildRect(recipes.get(position).name().substring(0,1), Color.parseColor("#616161"));
-        holder.recipeImage.setImageDrawable(drawable);
+        if(TextUtils.isEmpty(recipes.get(position).image())) {
+            TextDrawable drawable = TextDrawable.builder()
+                    .buildRect(recipes.get(position).name().substring(0, 1), Color.parseColor("#ff5252"));
+            holder.recipeImage.setImageDrawable(drawable);
+        }
+        else {
+            GlideApp.with(context)
+                    .load(recipes.get(position).image())
+                    .centerCrop()
+                    .into(holder.recipeImage);
+        }
 
         holder.recipeSteps.setText(String.format(
-            Locale.getDefault(),"Steps: %d",
-            recipes.get(position).steps().size()
+                Locale.getDefault(), "Steps: %d",
+                recipes.get(position).steps().size()
         ));
     }
 

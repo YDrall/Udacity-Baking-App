@@ -97,7 +97,7 @@ public class RecipeListFragment extends Fragment {
         BakingApp.getComponent().inject(this);
 
         recipeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recipeListAdapter = new RecipeListAdapter(null);
+        recipeListAdapter = new RecipeListAdapter(null,getContext());
         recipeRecyclerView.setAdapter(recipeListAdapter);
 
         if(savedInstanceState==null) {
