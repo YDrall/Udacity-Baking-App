@@ -25,6 +25,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -185,6 +186,7 @@ public class RecipeListFragment extends Fragment {
         if(swipeRefreshLayout.isRefreshing())
             swipeRefreshLayout.setRefreshing(false);
         Timber.d(throwable.getMessage());
+        Toast.makeText(getContext(),throwable.getMessage(),Toast.LENGTH_SHORT).show();
     }
 
     private void onFetchRecipe(List<Recipe> recipes) {
@@ -224,6 +226,7 @@ public class RecipeListFragment extends Fragment {
                 @Override
                 public void onError(@NonNull Throwable e) {
                     Timber.d(e);
+                    Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -249,6 +252,7 @@ public class RecipeListFragment extends Fragment {
                     @Override
                     public void accept(@NonNull Throwable throwable) throws Exception {
                         Timber.d(throwable);
+                        Toast.makeText(getContext(),throwable.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 });
     }
