@@ -47,6 +47,8 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import me.drall.bakingapp.R;
 
 /**
@@ -61,7 +63,10 @@ public class PlayerActivity extends AppCompatActivity {
     public static final String RECIPE_URL_KEY = "RECIPE_URL_KEY";
 
     private SimpleExoPlayer player;
-    private SimpleExoPlayerView playerView;
+
+    @BindView(R.id.video_view)
+    SimpleExoPlayerView playerView;
+
     private ComponentListener componentListener;
 
     private String recipeUrl;
@@ -78,7 +83,7 @@ public class PlayerActivity extends AppCompatActivity {
         recipeUrl = getIntent().getStringExtra(RECIPE_URL_KEY);
 
         componentListener = new ComponentListener();
-        playerView = (SimpleExoPlayerView) findViewById(R.id.video_view);
+        ButterKnife.bind(this);
     }
 
     @Override
