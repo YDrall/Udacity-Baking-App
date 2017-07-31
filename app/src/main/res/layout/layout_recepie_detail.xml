@@ -13,7 +13,7 @@
   ~  See the License for the specific language governing permissions and limitations under the License.
   ~
   -->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/recipe_detail_parent_scroll_view">
@@ -66,4 +66,4 @@
                 android:background="@drawable/card_bg"
                 />
     </LinearLayout>
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>
